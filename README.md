@@ -1,6 +1,6 @@
 # intergration
 
-> A Vue.js project
+> A Vue.js project about common IM using word picture and video base on yunxin SDK
 
 ## Build Setup
 

@@ -2,6 +2,14 @@
 
 > A Vue.js project about common IM using word picture and video base on yunxin SDK
 
+#### 项目结构导读:
+
+![image-20201215183730192](D:%5Cebupt%5CPersonal%5Cchat%5CREADME.assets%5Cimage-20201215183730192.png)
+
+![image-20201215183825030](D:%5Cebupt%5CPersonal%5Cchat%5CREADME.assets%5Cimage-20201215183825030.png)
+
+![image-20201215183955290](D:%5Cebupt%5CPersonal%5Cchat%5CREADME.assets%5Cimage-20201215183955290.png)
+
 ## Build Setup
 
 ``` bash

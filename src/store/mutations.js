@@ -13,6 +13,9 @@ const mutations = {
     state.MD5 = MD5
     console.log('Init NetCall as webRTC version successful')
   },
+  setNimInstanceMut (state,nim){
+    state.nimInstance = nim
+  }
 }
 
 export default mutations

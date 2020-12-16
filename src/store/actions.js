@@ -6,6 +6,9 @@ const actions = {
   // 初始化SDK
   initUtils (context) {
     context.commit('initUtils')
+  },
+  setNimInstanceAct(context,nim){
+    context.commit('setNimInstanceMut',nim)
   }
 }
 export default actions

@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <HeaderTabs></HeaderTabs>
     <router-view/>
   </div>
 </template>
 
 <script>
 import Chat from './views/Chat'
+import HeaderTabs from './components/common/HeaderTabs'
 export default {
   name: 'App',
   components: {
-    Chat
+    Chat,
+    HeaderTabs
   }
 }
 </script>

@@ -1,8 +1,9 @@
 // 群消息业务已读通知
 const teamMsgHandle = {
-  onTeamMsgReceipt(obj) {
+  onTeamMsgReceipt(teamMsgReceipts) {
     console.log('onTeamMsgReceipt........')
-    console.log(obj)
+    console.log(teamMsgReceipts)
+    console.log('群消息已读通知', teamMsgReceipts)
   },
 }
 export default teamMsgHandle

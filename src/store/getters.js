@@ -11,6 +11,9 @@ const getters = {
   },
   MD5Getter(state){
     return state.MD5
+  },
+  nimInstanceGetter(state){
+    return state.nimInstance
   }
 }
 export default getters

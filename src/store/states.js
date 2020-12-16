@@ -6,5 +6,6 @@ const state = {
   NIM: null,
   MD5: null,
   NetCall: null,
+  nimInstance: null
 }
 export default state

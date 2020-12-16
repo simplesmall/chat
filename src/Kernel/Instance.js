@@ -16,7 +16,8 @@ import multiLoginHandle from "../Handle/multiLogin/multiLoginHandle";
 import loginHandle from "../Handle/login/loginHandle";
 
 const Instance = {
-  getInstance(NIM) {
+  getInstance(NIM,BaseDomInstance) {
+    this.DomInstance = BaseDomInstance
     return NIM.getInstance({
       debug: false,
       appKey: nimConfig.appKey,
@@ -104,7 +105,7 @@ const Instance = {
     sysMsgHandle.onCustomSysMsg(obj)
   },
   onOfflineCustomSysMsgs(obj) {
-    sysMsgHandle.onOfflineCustomSysMsgs(obj)
+    sysMsgHandle.onOfflineCustomSysMsgs(obj,this.DomInstance)
   },
   onUpdateSysMsgUnread(obj) {
     sysMsgHandle.onUpdateSysMsgUnread(obj)
@@ -113,10 +114,10 @@ const Instance = {
     sysMsgHandle.onSysMsgUnread(obj)
   },
   onUpdateSysMsg(obj) {
-    sysMsgHandle.onUpdateSysMsg(obj)
+    sysMsgHandle.onUpdateSysMsg(obj,this.DomInstance)
   },
   onSysMsg(obj) {
-    sysMsgHandle.onSysMsg(obj)
+    sysMsgHandle.onSysMsg(obj,this.DomInstance)
   },
   onOfflineSysMsgs(obj) {
     sysMsgHandle.onOfflineSysMsgs(obj)
@@ -124,21 +125,21 @@ const Instance = {
 
 // 消息
   onMsg(obj) {
-    msgHandle.onMsg(obj)
+    msgHandle.onMsg(obj,this.DomInstance)
   },
   onOfflineMsgs(obj) {
-    msgHandle.onOfflineMsgs(obj)
+    msgHandle.onOfflineMsgs(obj,this.DomInstance)
   },
   onRoamingMsgs(obj) {
-    msgHandle.onRoamingMsgs(obj)
+    msgHandle.onRoamingMsgs(obj,this.DomInstance)
   },
 
 // 会话
   onUpdateSession(obj) {
-    sessionHandle.onUpdateSession(obj)
+    sessionHandle.onUpdateSession(obj,this.DomInstance)
   },
   onSessions(obj) {
-    sessionHandle.onSessions(obj)
+    sessionHandle.onSessions(obj,this.DomInstance)
   },
 
 // 群消息业务已读通知
@@ -148,22 +149,22 @@ const Instance = {
 
 // 群组
   onUpdateTeamMember(obj) {
-    teamHandle.onUpdateTeamMember(obj)
+    teamHandle.onUpdateTeamMember(obj,this.DomInstance)
   },
   onSyncTeamMembersDone(obj) {
     teamHandle.onSyncTeamMembersDone(obj)
   },
   onTeamMembers(obj) {
-    teamHandle.onTeamMembers(obj)
+    teamHandle.onTeamMembers(obj,this.DomInstance)
   },
   onUpdateTeam(obj) {
     teamHandle.onUpdateTeam(obj)
   },
   onCreateTeam(obj) {
-    teamHandle.onCreateTeam(obj)
+    teamHandle.onCreateTeam(obj,this.DomInstance)
   },
   onTeams(obj) {
-    teamHandle.onTeams(obj)
+    teamHandle.onTeams(obj,this.DomInstance)
   },
 
 // 机器人列表的回调
@@ -173,24 +174,24 @@ const Instance = {
 
 // 用户名片
   onUpdateUser(obj) {
-    userProfileHandle.onUpdateUser(obj)
+    userProfileHandle.onUpdateUser(obj,this.DomInstance)
   },
   onUsers(obj) {
-    userProfileHandle.onUsers(obj)
+    userProfileHandle.onUsers(obj,this.DomInstance)
   },
   onUpdateMyInfo(obj) {
-    userProfileHandle.onUpdateMyInfo(obj)
+    userProfileHandle.onUpdateMyInfo(obj,this.DomInstance)
   },
   onMyInfo(obj) {
-    userProfileHandle.onMyInfo(obj)
+    userProfileHandle.onMyInfo(obj,this.DomInstance)
   },
 
 // 好友关系
   onSyncFriendAction(obj) {
-    friendRelationHandle.onSyncFriendAction(obj)
+    friendRelationHandle.onSyncFriendAction(obj,this.DomInstance)
   },
   onFriends(obj) {
-    friendRelationHandle.onFriends(obj)
+    friendRelationHandle.onFriends(obj,this.DomInstance)
   },
 
 // 用户关系
@@ -214,7 +215,7 @@ const Instance = {
 
 // 连接
   connect(obj) {
-    loginHandle.connect(obj)
+    loginHandle.connect(obj,this.DomInstance)
   },
   onWillReconnect(obj) {
     // 此时说明 SDK 已经断开连接, 请开发者在界面上提示用户连接已断开, 而且正在重新建立连接

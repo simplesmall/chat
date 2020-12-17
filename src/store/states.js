@@ -6,6 +6,24 @@ const state = {
   NIM: null,
   MD5: null,
   NetCall: null,
-  nimInstance: null
+  nimInstance: null,
+  testObj: {},
+  LOGOUT: 'INIT LOGOUT.....',
+  // 一下为各个功能模块部分的数据对象
+  data: {
+    broadcast: {},
+    friendRelation: [],
+    login: {},
+    msg: {},
+    multiLogin: {},
+    robot: {},
+    sessions: [],
+    sync: {},
+    sysMsg: {},
+    team: {},
+    teamMsg: {},
+    userProfile: {},
+    userRelation: {}
+  }
 }
 export default state

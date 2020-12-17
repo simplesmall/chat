@@ -10,29 +10,30 @@
 
 <script>
   import Instance from '../../Kernel/Instance'
+  import MainLogin from '../../Kernel/MainLogin'
 
   export default {
     name: 'Init',
     data () {
       return {
         show: false,
-        nim: null,
+        localNim: null,
         isLogin: false,
       }
     },
     created () {
-      this.showSDK()
+      this.initNim()
     },
     methods: {
       // 针对非 destory 的断开连接可以选择再次连接
       connectBtn () {
         // 重新连接
-        this.nim.connect()
+        this.localNim.connect()
       },
       // 清除登录实例,单例模式所以完全清除内存
       destoryBtn () {
         // 主动清除单例实例
-        this.nim.destroy({
+        this.localNim.destroy({
           done: (err) => {
             console.log(err)
             console.log(this.$store.getters.nimInstanceGetter)
@@ -53,12 +54,12 @@
       },
       // 测试显示实例化 nim
       showNim () {
-        console.log(this.nim)
+        console.log(this.localNim)
       },
       // 登录创建实例方法
       getInstance (NIM, root) {
-        this.nim = Instance.getInstance(NIM, root)
-        this.$store.dispatch('setNimInstanceAct', this.nim)
+        this.localNim = Instance.getInstance(NIM, root)
+        this.$store.dispatch('setNimInstanceAct', this.localNim)
         console.log('===================>this.$store.getters.nimInstanceGetter')
         console.log(this.$store.getters.nimInstanceGetter)
         this.isLogin = true
@@ -66,14 +67,12 @@
       // 登录创建实例执行
       reverseShowBtn () {
         this.show = !this.show
-        this.getInstance(this.$store.getters.NIMGetter, this)
+        this.initNim()
       },
       // 测试用显示SDK信息
-      showSDK () {
-        console.log(this.nim === null)
-        console.log('this.$store.getters.NIMGetter')
-        console.log('this.$store.getters.NetCallGetter')
-        console.log('this.$store.getters.MD5Getter')
+      // 初始化Nim
+      initNim () {
+        this.localNim = MainLogin.checkNim(this)
       }
     }
   }

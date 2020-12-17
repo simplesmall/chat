@@ -3,12 +3,23 @@
  * Created on lucky 2020/12/14  21:58
  */
 const actions = {
-  // 初始化SDK
   initUtils (context) {
     context.commit('initUtils')
   },
   setNimInstanceAct(context,nim){
     context.commit('setNimInstanceMut',nim)
+  },
+  setTestObjAct(context,params){
+    context.commit('setTestObjMut',params)
+  },
+  LOGOUTACT(context,param){
+    context.commit('LOGOUTMUT',param)
+  },
+  setFriendRelationAct(context,param){
+    context.commit('setFriendRelationMut',param)
+  },
+  setSessionsAct(context,param){
+    context.commit('setSessionsMut',param)
   }
 }
 export default actions

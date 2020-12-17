@@ -33,21 +33,47 @@ const friendRelationHandle = {
   onFriends (obj,root) {
     console.log('onFriends........')
     console.log('收到好友列表', obj);
+    root.$store.dispatch('LOGOUTACT','收到好友列表')
+    let dataFriends = root.$store.getters.friendRelationGetter
+    let friends = root.$store.getters.nimInstanceGetter.mergeFriends(dataFriends,obj)
+    root.$store.dispatch('setFriendRelationAct',friends)
+    let invalid = root.$store.getters.nimInstanceGetter.cutFriends(friends,obj.invalid)
+    root.$store.dispatch('setFriendRelationAct',invalid)
     // data.friends = nim.mergeFriends(data.friends, obj);
     // data.friends = nim.cutFriends(data.friends, obj.invalid);
+    console.log(JSON.stringify(friends))
     this.refreshFriendsUI();
   },
   // ############   实际数据操作函数
+  // 添加好友
   onAddFriend(friend,root) {
+    let dataFriends = root.$store.getters.friendRelationGetter
+    let friends = root.$store.getters.nimInstanceGetter.mergeFriends(dataFriends,friend)
+    root.$store.dispatch('setFriendRelationAct',friends)
+    console.log(JSON.stringify(friends))
     // data.friends = nim.mergeFriends(data.friends, friend);
+    root.$store.dispatch('LOGOUTACT','添加好友操作')
     this.refreshFriendsUI();
   },
+  // 更新好友
   onUpdateFriend(friend,root) {
+    let dataFriends = root.$store.getters.friendRelationGetter
+    let friends = root.$store.getters.nimInstanceGetter.mergeFriends(dataFriends,friend)
+    root.$store.dispatch('setFriendRelationAct',friends)
+    console.log(JSON.stringify(friends))
     // data.friends = nim.mergeFriends(data.friends, friend);
+    root.$store.dispatch('LOGOUTACT','更新好友操作')
     this.refreshFriendsUI();
   },
+  // 删除好友
   onDeleteFriend(account,root) {
+    let dataFriends = root.$store.getters.friendRelationGetter
+    let friends = root.$store.getters.nimInstanceGetter.cutFriendsByAccounts(dataFriends,account)
+    root.$store.dispatch('setFriendRelationAct',friends)
+    console.log(JSON.stringify(friends))
+
     // data.friends = nim.cutFriendsByAccounts(data.friends, account);
+    root.$store.dispatch('LOGOUTACT','删除好友操作')
     this.refreshFriendsUI();
   },
   refreshFriendsUI() {

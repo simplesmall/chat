@@ -14,6 +14,12 @@ const getters = {
   },
   nimInstanceGetter(state){
     return state.nimInstance
+  },
+  TestObjGetter(state){
+    return state.testObj
+  },
+  friendRelationGetter(state){
+    return state.data['friendRelation']
   }
 }
 export default getters

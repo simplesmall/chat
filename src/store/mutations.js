@@ -15,26 +15,38 @@ const mutations = {
     console.log('Init NetCall as webRTC version successful')
   },
   // 初始化 nim 实例
-  setNimInstanceMut (state,nim){
+  setNimInstanceMut (state, nim) {
     state.nimInstance = nim
   },
-  setTestObjMut(state,params){
+  setTestObjMut (state, params) {
     for (let i = 0; i < params.length; i++) {
       state.testObj[params[i].key] = params[i].val
     }
   },
   // LOG测试方法
-  LOGOUTMUT(state,param){
-    console.log('执行到我这里了,This传值没问题...',param)
+  LOGOUTMUT (state, param) {
+    console.log('执行到我这里了,This传值没问题...', param)
     state.LOGOUT = param
   },
   // 设置好友对象
-  setFriendRelationMut(state,param){
+  setFriendRelationMut (state, param) {
     state.data['friendRelation'] = param
   },
   // 设置会话对象
-  setSessionsMut(state,param){
+  setSessionsMut (state, param) {
     state.data['sessions'] = param
+  },
+  // 设置本地消息对象
+  setLocalMsgsMut (state, msgs) {
+    state.data['localMsgs'] = msgs
+  },
+  // 设置历史消息对象
+  setHistoryMsgsMut (state, msgs) {
+    state.data['historyMsgs'] = msgs
+  },
+  // 设置消息对象
+  setMsgsMut (state, msgs) {
+    state.data['msgs'][msgs.key] = msgs.val
   }
 }
 

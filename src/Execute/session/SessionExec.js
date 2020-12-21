@@ -1,7 +1,7 @@
 import sessionHandle from '../../Handle/session/sessionHandle'
 
 const SessionExec = {
-  //获取本地会话列表
+  // 获取本地会话列表  lastSessionId从获取最近会话的sessions中获取到
   getLocalSessions (nim, lastSessionId, that) {
     nim.getLocalSessions({
       lastSessionId: lastSessionId,
@@ -15,7 +15,7 @@ const SessionExec = {
       }
     })
   },
-  //通过sessionId获取本地会话
+  // 通过sessionId获取本地会话  sessionId从获取最近会话的sessions中获取到
   getLocalSession (nim, sessionId, that) {
     nim.getLocalSession({
       sessionId: sessionId,
@@ -24,7 +24,7 @@ const SessionExec = {
         console.log(obj)
         console.log('获取本地会话操作' + (!error ? '完成' : '失败'), error, obj)
         if (!error) {
-          sessionHandle.onSessions(obj, that)
+          sessionHandle.onSession(obj, that)
         }
       }
     })

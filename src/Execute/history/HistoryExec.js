@@ -12,13 +12,15 @@ const HistoryExec = {
       }
     })
   },
-  //获取本地历史记录
-  getLocalMsgs (nim, sessionId) {
+  // 获取本地历史记录
+  getLocalMsgs (nim, sessionId, root) {
     nim.getLocalMsgs({
-      sessionId: sessionId,//表示单聊场景(p2p)，对方账号为account。
+      sessionId: sessionId, // 表示单聊场景(p2p)，对方账号为account。
       limit: 100,
       done: (error, obj) => {
-        console.log('获取本地消息' + (!error ? '成功' : '失败'), error, obj)
+        console.log('获取本地消息' + (!error ? '成功' : '失败'), error)
+        console.log(obj)
+        root.$store.dispatch('setLocalMsgsAct', JSON.stringify(obj.msgs))
       }
     })
   },
@@ -66,7 +68,7 @@ const HistoryExec = {
   },
   // ########云端历史记录
   //  获取云端历史记录
-  getHistoryMsgs (nim, to) {
+  getHistoryMsgs (nim, to, root) {
     nim.getHistoryMsgs({
       scene: 'p2p',
       to: to,
@@ -75,6 +77,7 @@ const HistoryExec = {
         console.log(obj)
         if (!error) {
           console.log(obj.msgs)
+          root.$store.dispatch('setHistoryMsgsAct', JSON.stringify(obj.msgs))
         }
       }
     })

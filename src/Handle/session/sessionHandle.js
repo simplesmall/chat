@@ -1,21 +1,41 @@
 // 会话
 const sessionHandle = {
-  onUpdateSession(session,root) {
+  onUpdateSession (session, root) {
     console.log('onUpdateSession........')
     console.log(session)
-    console.log('会话更新了', session);
+    console.log('会话更新了', session)
+    let dataSessions = root.$store.getters.sessionsGetter
+    dataSessions = root.$store.getters.nimInstanceGetter.mergeSessions(dataSessions, session)
+    root.$store.dispatch('setSessionsAct', dataSessions)
     // data.sessions = nim.mergeSessions(data.sessions, session);
-    this.updateSessionsUI();
+    this.updateSessionsUI()
   },
-  onSessions(sessions,root) {
+  onSessions (sessions, root) {
     console.log('onSessions........')
     console.log(sessions)
-    console.log('收到会话列表', sessions);
+    console.log('收到会话列表', sessions)
+    let dataSessions = root.$store.getters.sessionsGetter
+    console.log('原本的会话列表', dataSessions)
+    dataSessions = root.$store.getters.nimInstanceGetter.mergeSessions(dataSessions, sessions)
+    console.log('merge之后的会话列表', dataSessions)
+    root.$store.dispatch('setSessionsAct', dataSessions)
     // data.sessions = nim?.mergeSessions(data.sessions, sessions);
     this.updateSessionsUI()
   },
-  updateSessionsUI(){
-
+  onSession (sessions, root) {
+    console.log('onSessions........')
+    console.log(sessions)
+    console.log('收到会话列表', sessions)
+    let dataSessions = root.$store.getters.sessionsGetter
+    console.log('原本的会话列表', dataSessions)
+    dataSessions = root.$store.getters.nimInstanceGetter.mergeSessions(dataSessions, sessions)
+    console.log('merge之后的会话列表', dataSessions)
+    root.$store.dispatch('setSessionsAct', dataSessions)
+    // data.sessions = nim?.mergeSessions(data.sessions, sessions);
+    this.updateSessionsUI()
   },
+  updateSessionsUI () {
+
+  }
 }
 export default sessionHandle

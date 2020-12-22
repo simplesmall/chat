@@ -59,6 +59,9 @@ const mutations = {
   },
   setUsersMut (state, users) {
     state.data['users'] = users
+  },
+  setNetcallInstanceMut (state, netcall) {
+    state.netcallInstance = netcall
   }
 }
 

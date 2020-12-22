@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Chat from '../views/Chat'
 
-import Init from "../components/packageTest/Init";
+import Init from '../components/packageTest/Init'
 import Friends from '../components/packageTest/Friends'
 import History from '../components/packageTest/History'
 import ChatRoom from '../components/packageTest/ChatRoom'
 import Team from '../components/packageTest/Team'
 import Message from '../components/packageTest/Message'
 import Session from '../components/packageTest/Session'
+import NetcallDemo from '../components/packageTest/NetcallDemo'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/chat',
       name: 'Chat',
       component: Chat
+    },
+    {
+      path: '/netcall',
+      name: 'NetcallDemo',
+      component: NetcallDemo
     }
   ]
 })

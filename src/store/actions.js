@@ -41,6 +41,9 @@ const actions = {
   },
   setUsersAct (context, users) {
     context.commit('setUsersMut', users)
+  },
+  setNetcallInstanceAct (context, netcall) {
+    context.commit('setNetcallInstanceMut', netcall)
   }
 }
 export default actions

@@ -22,6 +22,9 @@
       <router-link to="/team">
         <el-button>群组功能</el-button>
       </router-link>
+      <router-link to="/netcall">
+        <el-button>netcall</el-button>
+      </router-link>
       <!--<router-link to="/chat">
         <el-button>测试页面</el-button>
       </router-link>-->

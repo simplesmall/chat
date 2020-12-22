@@ -44,6 +44,9 @@ const getters = {
   },
   usersGetter (state) {
     return state.data['users']
+  },
+  netcallInstanceGetter (state) {
+    return state.netcallInstance
   }
 }
 export default getters

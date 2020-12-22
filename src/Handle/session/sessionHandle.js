@@ -15,9 +15,7 @@ const sessionHandle = {
     console.log(sessions)
     console.log('收到会话列表', sessions)
     let dataSessions = root.$store.getters.sessionsGetter
-    console.log('原本的会话列表', dataSessions)
     dataSessions = root.$store.getters.nimInstanceGetter.mergeSessions(dataSessions, sessions)
-    console.log('merge之后的会话列表', dataSessions)
     root.$store.dispatch('setSessionsAct', dataSessions)
     // data.sessions = nim?.mergeSessions(data.sessions, sessions);
     this.updateSessionsUI()
@@ -27,9 +25,7 @@ const sessionHandle = {
     console.log(sessions)
     console.log('收到会话列表', sessions)
     let dataSessions = root.$store.getters.sessionsGetter
-    console.log('原本的会话列表', dataSessions)
     dataSessions = root.$store.getters.nimInstanceGetter.mergeSessions(dataSessions, sessions)
-    console.log('merge之后的会话列表', dataSessions)
     root.$store.dispatch('setSessionsAct', dataSessions)
     // data.sessions = nim?.mergeSessions(data.sessions, sessions);
     this.updateSessionsUI()

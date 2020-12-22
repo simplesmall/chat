@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     // 撤回消息
-    deleteMsg(){
+    deleteMsg () {
       var msg = {
         'scene': 'p2p',
         'from': 'simple4',
@@ -85,7 +85,7 @@ export default {
         'sessionId': 'p2p-jiandan',
         'flow': 'out'
       }
-      MsgExec.deleteMsg(this.localNIm,msg)
+      MsgExec.deleteMsg(this.localNIm, msg)
     },
     // 转发消息
     forwardMsg (account) {
@@ -133,7 +133,7 @@ export default {
         'First': '11111',
         'ArrsyTest': [1, 2, 3, 4]
       }
-      MsgExec.sendCustomMsg(this.localNIm, account, JSON.stringify(content), root)
+      MsgExec.sendCustomMsg(this.localNIm, account, JSON.stringify(content), this)
     },
     // 发送提示消息
     sendTipMsg (account) {

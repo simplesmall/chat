@@ -13,8 +13,13 @@ const teamHandle = {
   },
   onTeamMembers (team, root) {
     console.log('群id', team.teamId, '群成员', team.members)
-    var teamId = team.teamId
-    var members = team.members
+    let teamId = team.teamId
+    let members = team.members
+    let dataTeamMembers = root.$store.getters.teamMembersGetter || {}
+    dataTeamMembers[teamId] = root.$store.getters.nimInstanceGetter.mergeTeamMembers(dataTeamMembers[teamId], members)
+    dataTeamMembers[teamId] = root.$store.getters.nimInstanceGetter.cutTeamMembers(dataTeamMembers[teamId], members.invalid)
+    let tempTeamObj = {'key': teamId, 'val': dataTeamMembers[teamId]}
+    root.$store.dispatch('setTeamMembersAct', tempTeamObj)
     // data.teamMembers = data.teamMembers || {};
     // data.teamMembers[teamId] = nim.mergeTeamMembers(data.teamMembers[teamId], members);
     // data.teamMembers[teamId] = nim.cutTeamMembers(data.teamMembers[teamId], members.invalid);
@@ -30,14 +35,19 @@ const teamHandle = {
     console.log('onCreateTeam........')
     console.log(team)
     console.log('你创建了一个群', team)
+    let dataTeams = root.$store.getters.teamsGetter
+    dataTeams = root.$store.getters.nimInstanceGetter.mergeTeams(dataTeams, team)
+    root.$store.dispatch('setTeamsAct', dataTeams)
     // data.teams = nim.mergeTeams(data.teams, team)
-    // refreshTeamsUI();
     this.onTeamMembers(team, root)
   },
-  onTeams (teams,root) {
+  onTeams (teams, root) {
     console.log('onTeams........')
     console.log(teams)
     console.log('群列表', teams)
+    let dataTeams = root.$store.getters.teamsGetter
+    dataTeams = root.$store.getters.nimInstanceGetter.mergeTeams(dataTeams, teams)
+    root.$store.dispatch('setTeamsAct', dataTeams)
     // data.teams = nim.mergeTeams(data.teams, teams);
     this.onInvalidTeams(teams.invalid)
   },

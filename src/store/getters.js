@@ -32,6 +32,18 @@ const getters = {
   },
   msgsGetter (state) {
     return state.data['msgs']
+  },
+  teamsGetter (state) {
+    return state.data['teams']
+  },
+  teamMembersGetter (state) {
+    return state.data['teamMembers']
+  },
+  myInfoGetter (state) {
+    return state.data['myInfo']
+  },
+  usersGetter (state) {
+    return state.data['users']
   }
 }
 export default getters

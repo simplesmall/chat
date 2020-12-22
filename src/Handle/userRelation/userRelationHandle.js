@@ -1,20 +1,20 @@
 // 用户关系
 const userRelationHandle = {
-  onMarkInMutelist(obj) {
+  onMarkInMutelist (obj) {
     console.log('onMarkInMutelist........')
     console.log(obj)
   },
-  onMutelist(obj) {
+  onMutelist (obj) {
     console.log('onMutelist........')
     console.log(obj)
   },
-  onMarkInBlacklist(obj) {
+  onMarkInBlacklist (obj) {
     console.log('onMarkInBlacklist........')
     console.log(obj)
   },
-  onBlacklist(obj) {
+  onBlacklist (obj) {
     console.log('onBlacklist........')
     console.log(obj)
-  },
+  }
 }
 export default userRelationHandle

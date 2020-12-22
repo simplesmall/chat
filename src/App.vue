@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HeaderTabs></HeaderTabs>
+    <div style="height: 30px;width: 20px;margin: 5px auto">{{url}}</div>
     <router-view/>
   </div>
 </template>
@@ -10,9 +11,19 @@ import Chat from './views/Chat'
 import HeaderTabs from './components/common/HeaderTabs'
 export default {
   name: 'App',
+  data () {
+    return {
+      url: this.$route.path
+    }
+  },
   components: {
     Chat,
     HeaderTabs
+  },
+  watch: {
+    '$route.path': function (val) {
+      this.url = val
+    }
   }
 }
 </script>

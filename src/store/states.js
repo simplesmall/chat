@@ -20,9 +20,12 @@ const state = {
     multiLogin: {},
     robot: {},
     sessions: [],
+    myInfo: {},
+    users: [],
     sync: {},
     sysMsg: {},
-    team: {},
+    teams: [],
+    teamMembers: [],
     teamMsg: {},
     userProfile: {},
     userRelation: {}

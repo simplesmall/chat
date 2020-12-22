@@ -16,11 +16,29 @@
         v-model="content">
       </el-input>
     </el-row>
+    <el-row
+    style="margin-top: 30px"
+    >
+      <el-button @click="changeMyInfo">修改个人信息</el-button>
+      <el-button @click="showMyInfo">显示个人信息</el-button>
+      <el-button @click="showUsers">显示好友信息</el-button>
+      <el-button @click="getUser">获取用户资料</el-button>
+      <el-button @click="getUsers">获取用户组资料</el-button>
+    </el-row>
+    <el-input
+    type="textarea"
+    style="margin-top: 20px"
+    :rows="15"
+    v-model="MyInfo"
+    placeholder="显示好友和个人信息"
+    >
+    </el-input>
   </div>
 </template>
 
 <script>
 import MainLogin from '../../Kernel/MainLogin'
+import UserProfileExec from '../../Execute/userProfile/UserProfileExec'
 
 export default {
   name: 'Init',
@@ -30,13 +48,48 @@ export default {
       localNim: null,
       isLogin: false,
       content: null,
-      nimShow: false
+      nimShow: false,
+      MyInfo: null
     }
   },
   created () {
     this.initNim()
   },
   methods: {
+    // 获取用户资料
+    getUsers () {
+      let accounts = ['simple1', 'simple2']
+      UserProfileExec.getUsers(this.localNim, accounts, this)
+      this.MyInfo = JSON.stringify(this.$store.getters.usersGetter)
+    },
+    // 获取用户资料
+    getUser () {
+      UserProfileExec.getUser(this.localNim, 'simple1', this)
+      // this.MyInfo = JSON.stringify(this.$store.getters.myInfoGetter)
+    },
+    // 修改个人信息
+    changeMyInfo () {
+      var newObj = {
+        nick: 'simple4',
+        avatar: 'http://newAvatar' + new Date(),
+        sign: '这是我此刻的最新签名' + new Date(),
+        gender: 'male',
+        email: 'new@email.com',
+        birth: '1900-01-01',
+        tel: '13390900909',
+        custom: {type: 'newCustom', value: 'new'}
+      }
+      UserProfileExec.updateMyInfo(this.localNim, newObj, this)
+      this.MyInfo = JSON.stringify(this.$store.getters.myInfoGetter)
+    },
+    // 显示好友信息
+    showUsers () {
+      this.MyInfo = JSON.stringify(this.$store.getters.usersGetter)
+    },
+    // 显示自己信息
+    showMyInfo () {
+      this.MyInfo = JSON.stringify(this.$store.getters.myInfoGetter)
+    },
     // 针对非 destory 的断开连接可以选择再次连接
     connectBtn () {
       // 重新连接

@@ -47,6 +47,18 @@ const mutations = {
   // 设置消息对象
   setMsgsMut (state, msgs) {
     state.data['msgs'][msgs.key] = msgs.val
+  },
+  setTeamsMut (state, teams) {
+    state.data['teams'] = teams
+  },
+  setTeamMembersMut (state, teamMembers) {
+    state.data['teamMembers'][teamMembers.key] = teamMembers.val
+  },
+  setMyInfoMut (state, info) {
+    state.data['myInfo'] = info
+  },
+  setUsersMut (state, users) {
+    state.data['users'] = users
   }
 }
 

@@ -29,6 +29,18 @@ const actions = {
   },
   setMsgsAct (context, msgs) {
     context.commit('setMsgsMut', msgs)
+  },
+  setTeamsAct (context, teams) {
+    context.commit('setTeamsMut', teams)
+  },
+  setTeamMembersAct (context, teamMembers) {
+    context.commit('setTeamMembersMut', teamMembers)
+  },
+  setMyInfoAct (context, myInfo) {
+    context.commit('setMyInfoMut', myInfo)
+  },
+  setUsersAct (context, users) {
+    context.commit('setUsersMut', users)
   }
 }
 export default actions

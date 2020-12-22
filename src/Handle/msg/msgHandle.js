@@ -16,7 +16,7 @@ const msgHandle = {
     console.log('onRoamingMsgs........')
     console.log(obj)
     console.log('漫游消息', obj)
-    this.pushMsg(obj.msgs)
+    this.pushMsg(obj.msgs,root)
   },
 
   //  ######

@@ -90,7 +90,7 @@ const Instance = {
 
   // 同步完成
   onSyncDone (obj) {
-    syncHandle.onSyncDone(obj)
+    syncHandle.onSyncDone(obj, this.DomInstance)
   },
 
   // 收到广播消息

@@ -5,6 +5,7 @@
 import NIM from '../SDK/NIM_Web_NIM_v8.1.0.js'
 import {MD5} from '../utils/md5.js'
 import WebRTC from '../SDK/NIM_Web_WebRTC_v8.1.0'
+// import WebRTC from '../SDK/NIM_Web_Netcall_v8.1.0'
 
 const mutations = {
   // 初始化SDK
@@ -16,6 +17,7 @@ const mutations = {
   },
   // 初始化 nim 实例
   setNimInstanceMut (state, nim) {
+    console.log('设置 setNimInstanceAct 中......................')
     state.nimInstance = nim
   },
   setTestObjMut (state, params) {
@@ -61,6 +63,7 @@ const mutations = {
     state.data['users'] = users
   },
   setNetcallInstanceMut (state, netcall) {
+    console.log('设置 netcallInstance 中......................')
     state.netcallInstance = netcall
   }
 }
